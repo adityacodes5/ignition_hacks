@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:ignition_hacks/image_looper.dart';
-import 'package:ignition_hacks/welcome_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ignition_hacks/finance_data.dart';
+import 'package:ignition_hacks/screens/welcome_screen.dart';
+import 'package:provider/provider.dart';
 
 final ThemeData themeData = ThemeData(
-    colorSchemeSeed: Color.fromRGBO(0, 108, 209, 1),
-    primaryColor: Color.fromRGBO(0, 108, 209, 1));
-void main() {
+  primaryColor: Color.fromRGBO(0, 108, 209, 1),
+  colorScheme: ColorScheme.fromSwatch()
+      .copyWith(secondary: Color.fromRGBO(0, 108, 209, 1)),
+  textTheme: GoogleFonts.latoTextTheme(),
+);
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MaterialApp(home: MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(body: WelcomeScreen());
-  }
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => FinancialData(),
+      child: MaterialApp(theme: themeData, home: WelcomeScreen()),
+    ),
+  );
 }

@@ -11,7 +11,7 @@ class _ImageLooperState extends State<ImageLooper> {
   @override
   void initState() {
     super.initState();
-    _loopImage();
+    //_loopImage();
   }
 
   void _loopImage() async {
@@ -28,15 +28,17 @@ class _ImageLooperState extends State<ImageLooper> {
   }
 
   @override
+  //Widget build(BuildContext context) {
+  //  return Image.asset(
+  //    width: 300,
+  //    "lib/assets/welcome_screen/frame_$loopCount-Photoroom.png", - TOO BUGGY, forget about loop lol
+  //  );
+  //}
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: Image.asset(
-          "lib/assets/welcome_screen/frame_$loopCount-Photoroom.png",
-          colorBlendMode: BlendMode.clear,
-        ),
-      ),
+    return Image.asset(
+      width: 300,
+      "lib/assets/welcome_screen/frame_1-Photoroom.png",
     );
   }
 }
